@@ -35,3 +35,72 @@ kubectl describe pods
 kubectl describe rs
   
 kubectl describe deployment
+  
+
+Service Object > Cluster IP> NodePort > Loadbalancer
+-----------------------------------------------------
+-----------------------------------------------------
+  
+  The moto of all the service types is to discover and distribute the traffic to underlying pods
+
+The default service is cluster IP .don;t mention type in manifest
+
+cluster IP:
+---------------
+
+accessible within the cluster
+
+clsuter IP manifest:
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+  selector:
+    app: app-server
+other pods use port 90 to access this service
+
+it is a suitable app to DB traffic
+
+Node port:
+----------
+
+Accessible from outside cluster
+
+nodeport : accessible from the outside cluster
+
+port: actual node port service is running
+
+targetport: forward the traffic to port
+
+Nodeport is exposed to all nodes in the cluster
+
+Ex:
+
+you have two nodes with IP
+
+10.16.10.01
+
+10.18.10.01
+
+https://10.16.10.01:3200
+
+traffic will be distributed to two nodes
+
+Loadbalancer:
+------------
+
+Cloud Specific Implementation,Accessible from outside cluster
+
+commnads:
+eksctl get cluster
+
+kubectl apply -f loadbalancer-service.yaml
+
+kubectl get service
+
+kubectl describe service <name-of-the-service>
