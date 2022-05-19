@@ -13,14 +13,25 @@ Deploy object  > Replica Set > Pod
 To run deployment 
 -----------------
 kubectl get all
+
 kubectl get nodes
+
 kubectl apply -f  nginx-deployment.yaml
+
 kubectl get all
+
 kubectl delete pod <name-of-the-pod>
+  
 kubectl get rs
+  
 //rs stands for replicaset
+  
 kubectl delete rs <name-of-the-rs>
+  
 kubectl get rs
+  
 kubectl describe pods
+  
 kubectl describe rs
+  
 kubectl describe deployment
