@@ -104,3 +104,11 @@ kubectl apply -f loadbalancer-service.yaml
 kubectl get service
 
 kubectl describe service <name-of-the-service>
+  
+EKSCTL> Cluster Creation
+
+eksctl create cluster --name <name-of-the-cluster> --version 1.15 --nodegroup-name <nodegroupname> --node-type t3.micro --nodes 2 --manged
+above commands create cluster with 2 nodes of type managed
+then
+kubectl apply -f nginx-deployment.yaml
+it will create pod with nginx containers
